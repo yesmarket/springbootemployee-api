@@ -3,7 +3,7 @@ ARG JAR_FILE=target/springbootemployee-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
-FROM --platform=linux/amd64 openjdk:18.0.1-slim-bullseye
+FROM --platform=linux/amd64 openjdk:jdk-slim
 #FROM --platform=linux/amd64 openjdk:19-ea-21-oracle
 COPY --from=builder dependencies/ ./
 COPY --from=builder snapshot-dependencies/ ./
